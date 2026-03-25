@@ -52,5 +52,47 @@ namespace RGB_Szinkevero
             if (GreenCheckBox.IsChecked == false) GreenSlider.Value = rnd.Next(256);
             if (BlueCheckBox.IsChecked == false) BlueSlider.Value = rnd.Next(256);
         }
+
+        private void btnCanvasDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DrawingCanvas.Children.Clear();
+        }
+
+        private void DrawingCanvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Drawing(e.GetPosition(DrawingCanvas));
+            }
+        }
+
+        private void DrawingCanvas_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                Drawing(e.GetPosition(DrawingCanvas));
+            }
+        }
+
+        private void Drawing(Point pos)
+        {
+            Shape shape;
+            if (rbCircle.IsChecked == false)
+            {
+                shape = new Rectangle();
+            }
+            else
+            {
+                shape = new Ellipse();
+            }
+            double size = BrushSizeSlider.Value;
+            shape.Width = size;
+            shape.Height = size;
+            shape.Fill = ColorPreview.Fill;
+
+            Canvas.SetLeft(shape, pos.X - size / 2);
+            Canvas.SetTop(shape, pos.Y - size / 2);
+            DrawingCanvas.Children.Add(shape);
+        }
     }
 }
