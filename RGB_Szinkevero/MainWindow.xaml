@@ -51,7 +51,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Border BorderBrush="Black" BorderThickness="2">
+            <Border BorderBrush="Black" BorderThickness="5" CornerRadius="5">
                 <Canvas x:Name="DrawingCanvas" Background="White" MouseMove="DrawingCanvas_MouseMove" MouseDown="DrawingCanvas_MouseDown" ClipToBounds="True"/>
             </Border>
 

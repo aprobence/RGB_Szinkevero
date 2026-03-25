@@ -32,6 +32,13 @@ namespace RGB_Szinkevero
             byte r = (byte)RedSlider.Value;
             byte g = (byte)GreenSlider.Value;
             byte b = (byte)BlueSlider.Value;
+            if (r == 255 && g == 255 && b == 255)
+            {
+                txtPreviewLabel.Foreground = new SolidColorBrush(Colors.Black);
+            } else
+            {
+                txtPreviewLabel.Foreground = new SolidColorBrush(Colors.White);
+            }
             Color aktualisSzin = Color.FromRgb(r, g, b);
             ColorPreview.Fill = new SolidColorBrush(aktualisSzin);
             txtRGB.Text = $"RGB: ({r}, {g}, {b})";
